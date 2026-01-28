@@ -35,10 +35,14 @@
     }
 
     #map-image {
-      width: 100vw;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
+
 
     .point {
       position: absolute;
@@ -90,8 +94,17 @@
   const mapContainer = document.getElementById("map-container");
 
   mapImage.onload = () => {
-    originalWidth = mapImage.naturalWidth;
-    loadExcel(); // ← AUTOMATYCZNIE
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+  
+    const scaleX = vw / mapImage.naturalWidth;
+    const scaleY = vh / mapImage.naturalHeight;
+  
+    // skala tak, żeby CAŁY obraz się zmieścił
+    scale = Math.min(scaleX, scaleY);
+  
+    applyZoom();
+    loadExcel();
   };
 
   function zoomIn() {
@@ -140,5 +153,6 @@
 
 </body>
 </html>
+
 
 

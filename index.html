@@ -134,18 +134,14 @@
   }
 
   function addPoints(points) {
-    const displayedWidth = mapImage.clientWidth;
-    const scaleFactor = displayedWidth / originalWidth;
-  
     points.forEach(p => {
       const point = document.createElement("div");
       point.className = "point";
   
-      point.style.left = (p.x * scaleFactor) + "px";
-      point.style.top  = (p.y * scaleFactor) + "px";
+      point.style.left = p.x + "px";
+      point.style.top  = p.y + "px";
   
-      point.textContent = p.label; // ← label w środku
-  
+      point.textContent = p.label;
       mapContainer.appendChild(point);
     });
   }
@@ -153,6 +149,7 @@
 
 </body>
 </html>
+
 
 
 

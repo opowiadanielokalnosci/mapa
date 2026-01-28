@@ -1,23 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8">
-  <title>This is the title of the webpage!</title>
+  <title>Mapa</title>
 
-  <!-- Make it responsive on mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      overflow: hidden;
     }
 
     #map-wrapper {
       width: 100vw;
-      height: 100vh;
       overflow: auto;
-      background: #000;
     }
 
     #map-container {
@@ -25,8 +21,8 @@
     }
 
     img {
-      width: 100vw;
-      height: auto;
+      width: 100vw;   /* ← dokładnie szerokość ekranu */
+      height: auto;   /* ← brak ucinania */
       display: block;
     }
 
@@ -48,7 +44,6 @@
 
 <body>
 
-  <!-- Zoom controls -->
   <div id="controls">
     <button onclick="zoomIn()">+</button>
     <button onclick="zoomOut()">−</button>
@@ -60,7 +55,6 @@
 
       <map name="image-map">
         <area alt="1" title="1" href="#" coords="588,1145,34" shape="circle">
-        <!-- Remove NaN coords — they break the map -->
       </map>
     </div>
   </div>
@@ -82,14 +76,6 @@
       document.getElementById("map-container").style.transform =
         `scale(${scale})`;
     }
-
-    // Mouse wheel zoom
-    document.getElementById("map-wrapper").addEventListener("wheel", e => {
-      e.preventDefault();
-      scale += e.deltaY * -0.001;
-      scale = Math.min(Math.max(0.3, scale), 4);
-      applyZoom();
-    });
   </script>
 
 </body>

@@ -35,14 +35,10 @@
     }
 
     #map-image {
-      max-width: 100vw;
-      max-height: 100vh;
-      width: auto;
+      width: 100vw;
       height: auto;
       display: block;
-      margin: 0 auto;
     }
-
 
     .point {
       position: absolute;
@@ -94,17 +90,8 @@
   const mapContainer = document.getElementById("map-container");
 
   mapImage.onload = () => {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-  
-    const scaleX = vw / mapImage.naturalWidth;
-    const scaleY = vh / mapImage.naturalHeight;
-  
-    // skala tak, żeby CAŁY obraz się zmieścił
-    scale = Math.min(scaleX, scaleY);
-  
-    applyZoom();
-    loadExcel();
+    originalWidth = mapImage.naturalWidth;
+    loadExcel(); // ← AUTOMATYCZNIE
   };
 
   function zoomIn() {
@@ -134,14 +121,18 @@
   }
 
   function addPoints(points) {
+    const displayedWidth = mapImage.clientWidth;
+    const scaleFactor = displayedWidth / originalWidth;
+  
     points.forEach(p => {
       const point = document.createElement("div");
       point.className = "point";
   
-      point.style.left = p.x + "px";
-      point.style.top  = p.y + "px";
+      point.style.left = (p.x * scaleFactor) + "px";
+      point.style.top  = (p.y * scaleFactor) + "px";
   
-      point.textContent = p.label;
+      point.textContent = p.label; // ← label w środku
+  
       mapContainer.appendChild(point);
     });
   }
@@ -149,7 +140,4 @@
 
 </body>
 </html>
-
-
-
 

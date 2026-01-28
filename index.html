@@ -42,21 +42,19 @@
 
     .point {
       position: absolute;
-      width: 26px;              /* większa kropka */
-      height: 26px;
+      width: 32px;
+      height: 32px;
       background: orange;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      border: 3px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: bold;
       color: black;
-      white-space: nowrap;
-      padding: 4px;
     }
+
 
     .point span {
       position: absolute;
@@ -125,18 +123,16 @@
   function addPoints(points) {
     const displayedWidth = mapImage.clientWidth;
     const scaleFactor = displayedWidth / originalWidth;
-
+  
     points.forEach(p => {
       const point = document.createElement("div");
       point.className = "point";
-
+  
       point.style.left = (p.x * scaleFactor) + "px";
       point.style.top  = (p.y * scaleFactor) + "px";
-
-      const label = document.createElement("span");
-      label.textContent = p.label;
-
-      point.appendChild(label);
+  
+      point.textContent = p.label; // ← label w środku
+  
       mapContainer.appendChild(point);
     });
   }
@@ -144,3 +140,4 @@
 
 </body>
 </html>
+

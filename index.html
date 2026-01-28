@@ -35,10 +35,10 @@
     }
 
     #map-image {
-      width: 100vw;
-      height: auto;
       display: block;
+      max-width: none;
     }
+
 
     .point {
       position: absolute;
@@ -85,14 +85,30 @@
 <script>
   let scale = 1;
   let originalWidth = null;
+  let originalHeight = null;
 
   const mapImage = document.getElementById("map-image");
   const mapContainer = document.getElementById("map-container");
+  const mapWrapper = document.getElementById("map-wrapper");
 
   mapImage.onload = () => {
     originalWidth = mapImage.naturalWidth;
-    loadExcel(); // ← AUTOMATYCZNIE
+    originalHeight = mapImage.naturalHeight;
+
+    fitMapToScreen();   // ← KLUCZOWE
+    loadExcel();
   };
+
+  function fitMapToScreen() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const scaleX = screenWidth / originalWidth;
+    const scaleY = screenHeight / originalHeight;
+
+    scale = Math.min(scaleX, scaleY); // całość widoczna
+    applyZoom();
+  }
 
   function zoomIn() {
     scale += 0.1;
@@ -116,30 +132,25 @@
         const sheet = workbook.Sheets[workbook.SheetNames[0]];
         const points = XLSX.utils.sheet_to_json(sheet);
         addPoints(points);
-      })
-      .catch(err => console.error("Błąd wczytywania XLSX:", err));
+      });
   }
 
   function addPoints(points) {
-    const displayedWidth = mapImage.clientWidth;
-    const scaleFactor = displayedWidth / originalWidth;
-  
     points.forEach(p => {
       const point = document.createElement("div");
       point.className = "point";
-  
-      point.style.left = (p.x * scaleFactor) + "px";
-      point.style.top  = (p.y * scaleFactor) + "px";
-  
-      point.textContent = p.label; // ← label w środku
-  
+      point.style.left = p.x + "px";
+      point.style.top  = p.y + "px";
+      point.textContent = p.label;
       mapContainer.appendChild(point);
     });
   }
 </script>
 
+
 </body>
 </html>
+
 
 
 

@@ -11,7 +11,7 @@
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     #controls {
@@ -42,27 +42,31 @@
 
     .point {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 26px;              /* większa kropka */
+      height: 26px;
       background: orange;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      cursor: pointer;
-      border: 2px solid #fff;
+      border: 3px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+      white-space: nowrap;
+      padding: 4px;
     }
 
-    .point:hover::after {
-      content: attr(data-label);
+    .point span {
       position: absolute;
-      top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: black;
+      top: 30px;
+      background: rgba(0,0,0,0.8);
       color: white;
-      padding: 3px 6px;
-      font-size: 12px;
-      white-space: nowrap;
+      padding: 4px 8px;
       border-radius: 4px;
+      font-size: 13px;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -72,8 +76,6 @@
 <div id="controls">
   <button onclick="zoomIn()">+</button>
   <button onclick="zoomOut()">−</button>
-  <br><br>
-  <input type="file" accept=".xlsx" onchange="loadExcel(event)">
 </div>
 
 <div id="map-wrapper">
@@ -91,6 +93,7 @@
 
   mapImage.onload = () => {
     originalWidth = mapImage.naturalWidth;
+    loadExcel(); // ← AUTOMATYCZNIE
   };
 
   function zoomIn() {
@@ -107,35 +110,33 @@
     mapContainer.style.transform = `scale(${scale})`;
   }
 
-  function loadExcel(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = e => {
-      const workbook = XLSX.read(e.target.result, { type: "binary" });
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
-      const data = XLSX.utils.sheet_to_json(sheet);
-
-      addPoints(data);
-    };
-
-    reader.readAsBinaryString(file);
+  function loadExcel() {
+    fetch("wspolrzedne.xlsx")
+      .then(res => res.arrayBuffer())
+      .then(data => {
+        const workbook = XLSX.read(data, { type: "array" });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const points = XLSX.utils.sheet_to_json(sheet);
+        addPoints(points);
+      })
+      .catch(err => console.error("Błąd wczytywania XLSX:", err));
   }
 
   function addPoints(points) {
-    document.querySelectorAll(".point").forEach(p => p.remove());
-
     const displayedWidth = mapImage.clientWidth;
     const scaleFactor = displayedWidth / originalWidth;
 
     points.forEach(p => {
       const point = document.createElement("div");
       point.className = "point";
-      point.dataset.label = p.label;
 
       point.style.left = (p.x * scaleFactor) + "px";
       point.style.top  = (p.y * scaleFactor) + "px";
 
+      const label = document.createElement("span");
+      label.textContent = p.label;
+
+      point.appendChild(label);
       mapContainer.appendChild(point);
     });
   }

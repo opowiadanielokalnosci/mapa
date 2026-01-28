@@ -39,6 +39,30 @@
       max-width: none;
     }
 
+    #legend {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: white;
+      padding: 10px 12px;
+      border-radius: 8px;
+      max-height: 40vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      font-size: 14px;
+    }
+    
+    #legend ul {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0 0;
+    }
+    
+    #legend li {
+      margin-bottom: 4px;
+    }
+
 
     .point {
       position: absolute;
@@ -66,6 +90,7 @@
       font-size: 13px;
       white-space: nowrap;
     }
+    
   </style>
 </head>
 
@@ -136,20 +161,35 @@
   }
 
   function addPoints(points) {
+    const legendList = document.getElementById("legend-list");
+  
     points.forEach(p => {
+      // punkt na mapie
       const point = document.createElement("div");
       point.className = "point";
       point.style.left = p.x + "px";
       point.style.top  = p.y + "px";
       point.textContent = p.label;
+  
       mapContainer.appendChild(point);
+  
+      // wpis do legendy
+      const li = document.createElement("li");
+      li.textContent = `${p.label} – ${p.imie}`;
+      legendList.appendChild(li);
     });
   }
-</script>
 
+</script>
+  
+<div id="legend">
+  <strong>Legenda</strong>
+  <ul id="legend-list"></ul>
+</div>
 
 </body>
 </html>
+
 
 
 

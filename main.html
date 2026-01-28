@@ -1,28 +1,743 @@
+
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+    <script nonce="OjOYA2noJ7CxA5tY" type="text/javascript" src="//self.adblockultimate.net/manager.js?tm=1769561468&amp;lg=true" guid="{0C2E7540-9F7B-410F-8C5F-E4CF480A0603}" inwhitelist="false" status="true" autohide="true"></script><link rel="stylesheet" type="text/css" href="/css/build/pages/dpdf/template_normal.min.css?v=b656ae4116107c050940c02e5c966738a5e2bccb" />
+<script type="text/javascript">
+/*<![CDATA[*/
+YII_CSRF_TOKEN='4a90998132e83b111cc7d14c0ad8e3be01576432';
+/*]]>*/
+</script>
+<title>PDF Page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script type="text/javascript">
+        window.GLOBAL_CSRF_TOKEN = '4a90998132e83b111cc7d14c0ad8e3be01576432';
+    </script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-<h1>The main element</h1>
+    <!--Facebook meta-->
+    <meta property="og:url"
+          content="http://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1"/>
+    <meta property="og:title" content="Mapa Instytutu Kultury Polskiej"/>
+    <meta property="og:description"
+          content="Opowiadanie lokalności"/>
+    <meta property="og:image" content="http:https://cdn.qr-code-generator.com/account47789006/56717853_1.jpg?Expires=1769647352&Signature=SEl4Pny6Cokk3YekgNSR4QfGxcu-mSerMrf7LOXQkiUMy1krhXmIipXw1XouUK5z30vqkah3kPqLc-hLmG9PE2FQ1WPpofc7KQHK9DWBRQ96cXY9YfbMcS45BIKDcWkS0dWSEi8ft0rYyAZfEsmLWkw0Pi34cBktIQv4yx9b9qaK7Zy3VtqpGpUoT2yR~gyftDflmNDheioSfsT9Nd2IcTapoYjcf5mvoITbjPAugcLDwaw-6rwVFcFsWovGlE2cl5sEjQXMY6Rwbw33lx7zDdeX9QrWPp9oIM1xmZ4OCfOMkMwLprZRN~cTzF8W5vmrlMU5qBwT0rj8WjJ0kgl8ow__&Key-Pair-Id=KKMPOJU8AYATR"/>
+    <meta property="og:image:width" content="200"/>
+    <meta property="og:image:height" content="200"/>
 
-<main>
-  <h1>Most Popular Browsers</h1>
-  <p>Chrome, Firefox, and Edge are the most used browsers today.</p>
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="http://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1">
+    <meta name="twitter:title" content="Mapa Instytutu Kultury Polskiej">
+    <meta name="twitter:description"
+          content="Opowiadanie lokalności">
+    <meta name="twitter:image" content="http:https://cdn.qr-code-generator.com/account47789006/56717853_1.jpg?Expires=1769647352&Signature=SEl4Pny6Cokk3YekgNSR4QfGxcu-mSerMrf7LOXQkiUMy1krhXmIipXw1XouUK5z30vqkah3kPqLc-hLmG9PE2FQ1WPpofc7KQHK9DWBRQ96cXY9YfbMcS45BIKDcWkS0dWSEi8ft0rYyAZfEsmLWkw0Pi34cBktIQv4yx9b9qaK7Zy3VtqpGpUoT2yR~gyftDflmNDheioSfsT9Nd2IcTapoYjcf5mvoITbjPAugcLDwaw-6rwVFcFsWovGlE2cl5sEjQXMY6Rwbw33lx7zDdeX9QrWPp9oIM1xmZ4OCfOMkMwLprZRN~cTzF8W5vmrlMU5qBwT0rj8WjJ0kgl8ow__&Key-Pair-Id=KKMPOJU8AYATR">
+    <meta name="twitter:image:width" content="200">
+    <meta name="twitter:image:height" content="200">
 
-  <article>
-    <h2>Google Chrome</h2>
-    <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web browser today!</p>
-  </article>
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Mapa Instytutu Kultury Polskiej">
+    <meta itemprop="description"
+          content="Opowiadanie lokalności">
+    <meta itemprop="image" content="http:https://cdn.qr-code-generator.com/account47789006/56717853_1.jpg?Expires=1769647352&Signature=SEl4Pny6Cokk3YekgNSR4QfGxcu-mSerMrf7LOXQkiUMy1krhXmIipXw1XouUK5z30vqkah3kPqLc-hLmG9PE2FQ1WPpofc7KQHK9DWBRQ96cXY9YfbMcS45BIKDcWkS0dWSEi8ft0rYyAZfEsmLWkw0Pi34cBktIQv4yx9b9qaK7Zy3VtqpGpUoT2yR~gyftDflmNDheioSfsT9Nd2IcTapoYjcf5mvoITbjPAugcLDwaw-6rwVFcFsWovGlE2cl5sEjQXMY6Rwbw33lx7zDdeX9QrWPp9oIM1xmZ4OCfOMkMwLprZRN~cTzF8W5vmrlMU5qBwT0rj8WjJ0kgl8ow__&Key-Pair-Id=KKMPOJU8AYATR">
+</head>
+<body ng-app="app" id="dvideo-body" ng-controller="ComplexController" class="sh-body">
 
-  <article>
-    <h2>Mozilla Firefox</h2>
-    <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular web browser since January, 2018.</p>
-  </article>
+    <div class="loading-welcome active welcome-screen"
+     ng-style="{'background-color': view.code.welcome_extra.background || view.welcome_extra.background}"
+        style="background-color: #ffffff">
+    <div class="progress">
+        <div class="loading-bar indeterminate" ng-style="{'background-color': view.code.color1 || view.color1}"></div>
+    </div>
+    <div class="helper"></div>
+    <img id="welcomeImg" imageonload ng-src="{{view.welcome_screen || 'https://s3.eu-central-1.amazonaws.com/qrcgappcdn/pdf-solution/welcome.png'}}"
+         ng-style="{
+            'max-width': view.code.welcome_extra.zoom *2 || view.welcome_extra.zoom *2 + 'px',
+            'max-height': view.code.welcome_extra.zoom *2 || view.welcome_extra.zoom *2 + 'px',
+            'animation-iteration-count' :  view.showPreview == 'infinite' ? 'infinite' : '',
+            'animation-direction' :  view.showPreview == 'infinite' ? 'alternate' : ''
+            }">
+</div>
+    
+    <div class="sh-bar" ng-hide="view.code.linkToPDF">
+        <div ng-style="{background: view.code.color1, color: getTextColor1()}">
+            <div class="sh-container" style="position: relative;">
+                <i class="sh-bar__share icon icon-icon-more" id="share-fab-button"></i>
+                <div class="sh-bar__header">{{ view.code.company }}</div>
+                <div class="sh-bar__title" ng-show="view.code.title">{{ view.code.title }}</div>
+                <div class="sh-bar__description" ng-show="view.code.description">{{ view.code.description }}</div>
+            </div>
+        </div>
+        <div class="" id="rootElement"><!-- rootElement is important for sync data -->
+            <div ng-hide="hasAnyContentToDisplay()">
+                <div class="vcard-row text-center mt-20">
+                    <h4>Waiting for you to enter data</h4>
+                </div>
+                <div class="sk-three-bounce">
+                    <div class="sk-child sk-bounce1"></div>
+                    <div class="sk-child sk-bounce2"></div>
+                    <div class="sk-child sk-bounce3"></div>
+                </div>
+            </div>
+            <div ng-show="hasAnyContentToDisplay() && !view.code.linkToPDF">
+                <div class="sh-page" ng-class="{'sh-page--has-link': view.code.website}">
+    <img ng-src="{{ view.code.avatar || '/img/generator/pdf/empty-pdf-preview.png' }}" alt="" class="sh-avatar">
 
-  <article>
-    <h2>Microsoft Edge</h2>
-    <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge replaced Internet Explorer.</p>
-  </article>
-</main>
+    <a class="sh-link" href="{{ view.code.website | normalizeUrl }}" target="_blank" ng-show="view.code.website">
+        {{ view.code.website | domain }}
+    </a>
 
+    <a class="sh-button sh-button--primary" ng-style="{background: view.code.color2, color: getTextColor2()}" href="{{ view.code.file.url }}" target="_blank" ng-click="callAction($event, 'viewAction')">
+        <i class="icon icon-view" style="position: relative; top: 2px; margin-right: 2px; font-size: 16px; opacity: 0.7;"></i>
+        View PDF    </a>
+</div>
+<div id="redirectTo">
+    <div class="fixed-blur-bgd">
+        <div class="dialog-container">
+            <div class="fab-body">
+                <div class="event-title">
+                    Open browser?                </div>
+                <div class="dialog-body">
+                    Continue? You will be directed to another website.                </div>
+                <a class="event-slim-button ripplelink mt-10 pull-right" ng-style="{color: isColorLight(view.code.color2) ? 'black' : view.code.color2}"
+                   ng-click="dialogRedirectCallback(false)">
+                    No                </a>
+                <a class="event-slim-button ripplelink mt-10 pull-right" ng-style="{color: isColorLight(view.code.color2) ? 'black' : view.code.color2}"
+                   ng-click="dialogRedirectCallback(true)">
+                    Yes                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="gotIt">
+    <div class="fixed-blur-bgd">
+        <div class="dialog-container">
+            <div class="fab-body">
+                <div class="event-gotIt-button">
+                </div>
+                <div class="dialog-body pull-left">
+                    {{ gotItText }}
+                </div>
+                <a class="text-regular-blue mt-20" ng-click="closeDialog()">
+                    Got it                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="redirectToMaps">
+    <div class="fixed-blur-bgd">
+        <div class="dialog-container">
+            <div class="fab-body">
+                <div class="event-title">
+                    Use Google Maps                </div>
+                <div class="dialog-body">
+                    Directions will open in Google Maps.                    Do you want to continue?                </div>
+                <a class="event-slim-button ripplelink mt-10 pull-right"
+                   ng-style="{color: isColorLight(view.code.color2) ? 'black' : view.code.color2}"
+                   ng-click="dialogRedirectCallback(false)">
+                    No                </a>
+                <a class="event-slim-button ripplelink mt-10 pull-right"
+                   ng-style="{color: isColorLight(view.code.color2) ? 'black' : view.code.color2}"
+                   ng-click="dialogRedirectCallback(true, 'https://maps.google.com/maps?saddr='+getMapAddress()+'&daddr=')">
+                    Yes                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fabs" id="shareFab2">
+    <div class="fixed-blur-bgd">
+        <div class="chat">
+            <div class="fab-body">
+                <div class="icon-fab-close icon-event-close"></div>
+                <div class="fab-header" ng-style="{color: view.code.color2}">Share page</div>
+                <ul>
+                    <li>
+                        <i class="icon-fab-share-facebook icon-event-facebook"></i>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1" target="_blank">Facebook</a>
+                    </li>
+                    <li>
+                        <i class="icon-fab-share-x icon-event-x"></i>
+                        <a href="https://twitter.com/share?url=https://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1" target="_blank">X</a>
+                    </li>
+                    <li>
+                        <i class="icon-fab-share-email icon-event-email"></i>
+                        <a href="mailto:?body=https://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1" target="_blank">Email</a>
+                    </li>
+                    <li>
+                        <i class="icon-fab-share-message icon-event-message"></i>
+                        <input id="shortUrl" value="https://qrco.de/ikp_mapa_opowiadanie_lokalnosci?trackSharing=1" readonly>
+                        <button id="copyButton">Copy</button>
+                        <div class="ifCopySucceed" ng-show="ifCopySucceed">
+                            Text copied to the clipboard.                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fabs" id="saveMenu">
+    <div class="fixed-blur-bgd">
+        <div class="chat">
+            <div class="fab-body">
+                <div class="icon-fab-close icon-event-close"></div>
+                <ul>
+                    <li>
+                        <i class="icon icon-event-share"></i>
+                        <a href="{{ view.code.barcode }}" target="_blank" ng-click="$event.preventDefault(); toggleFab('#saveMenu'); toggleFab('#shareFab2');">
+                            Share PDF                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            <div ng-if="view.code && hasAnyContentToDisplay() && view.code.linkToPDF">
+                <iframe type="application/pdf" ng-src="{{ getPdfUrl() }}" width="316" height="512" style="height: 512px; width: 100%; border: 0;"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="text/javascript" src="/public/lib/jquery/dist/jquery.min.js?v=b656ae4116107c050940c02e5c966738a5e2bccb"></script>
+<script type="text/javascript" src="/js/build/angular.rendering.min.js?v=b656ae4116107c050940c02e5c966738a5e2bccb"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+    /**
+     * Angular connection
+     */
+    app.loadBasePreviewController();
+
+    /**
+     * Return value with '-' instead of spaces
+     *
+     * @param input - string
+     * */
+    app.filter('dashEncode', function () {
+        return function (input) {
+            if (input) {
+                return input.replace(/ /g, "-");
+            } else
+                return ' ';
+        };
+    });
+
+    /**
+     * The QR service for the app.
+     * */
+    app.service('qr', function () {
+        /**
+         * Scroll page from buttom to top
+         * */
+        this.scrollFromBottomtoTop = function (loadDemo) {
+            setTimeout(function () {
+                if (loadDemo == true && $('.icon-business-socialmedia').length > 0) {
+                    $("html, body").animate({
+                        scrollTop: $('.icon-business-socialmedia').offset().top
+                    }, 0)
+                    ;$("html, body").animate({
+                        scrollTop: 0
+                    }, 1000);
+                }
+            }, 0)
+        }
+    });
+
+    /**
+     * Directive
+     *
+     * When image is loaded fadeout welcome screen
+     * */
+    app.directive('imageonload', ['qr', function (qr) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.bind('load', function () {
+                    $("#welcomeImg").fadeIn(1000);
+                    window.setTimeout(function () {
+                        $(".loading-welcome.welcome-screen").fadeOut();
+                        scope.welcomeScreenScrollWindow++;
+                        if (scope.welcomeScreenScrollWindow == 1) {
+                            qr.scrollFromBottomtoTop(scope.loadDemo)
+                        }
+                    }, 2000);
+                });
+                element.bind('error', function () {
+                });
+            }
+        };
+    }]);
+
+    app.filter('normalizeUrl', function () {
+        return function (url) {
+            if (!url) {
+                return url;
+            }
+            if (/^https?:\/\//i.test(url)) {
+                return url;
+            }
+            return 'http://' + url;
+        };
+    });
+
+    app.filter('displayUrl', function () {
+        return function (url) {
+            if (!url) {
+                return url;
+            }
+            if (/^http:\/\//i.test(url)) {
+                return url.substr(7);
+            }
+            if (/^https:\/\//i.test(url)) {
+                return url.substr(8);
+            }
+            return url;
+        };
+    });
+
+    /**
+     * Return domain of input
+     * */
+    app.filter('domain', function () {
+        return function (input) {
+            if (input) {
+                if (input.indexOf('://') >= 0) {
+                    return input.split('/')[2]
+                }
+                return input.split('/')[0]
+            }
+            return input;
+        };
+    });
+
+    app.directive('pictureInput', ['$log', function ($log) {
+        return {
+            restrict: 'A',
+            link: function (scope, element) {
+                element.on('change', function () {
+                    var el = element[0];
+                    if ("files" in el && el.files.length > 0) {
+                        var file = el.files[0];
+                        $log.debug("Got picture type: " + file.type);
+                        if (/^image\//.test(file.type)) {
+                            $log.debug("Reading picture... [type: " + file.type + ", size: " + file.size + "]");
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                $log.debug("Reading is done [" + ('' + reader.result).substr(0, 30) + "...]");
+                                scope.setPicture(reader.result);
+                                scope.$apply();
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    } else {
+                        scope.setPicture('');
+                        scope.isTakingPictureAvailable = false;
+                        scope.$apply();
+                    }
+                });
+            }
+        };
+    }]);
+
+    //Override the base preview controller
+    app.controller('ComplexController', function ($scope, $controller, $sce, $rootScope, $filter, previewService, $window, $log, http, $timeout) {
+            $scope.welcomeScreenScrollWindow = 0;
+
+            /**
+             * @returns {boolean}
+             */
+            $scope.hasAnyContentToDisplay = function () {
+                return true;
+            };
+
+            /**
+             * Get the URL of the PDF document to display via iframe.
+             */
+            $scope.getPdfUrl = function () {
+                if (!$scope.view.code || !$scope.view.code.file.url) {
+                    return $sce.trustAsResourceUrl('/public/data/pdf/pdf_preview.pdf#page=1&view=Fit');
+                }
+                return $sce.trustAsResourceUrl($scope.view.code.file.url + '#view=fitH');
+            };
+
+            /**
+             * Get the text color #1.
+             * Depends on color1 brightness.
+             * @returns {string}
+             */
+            $scope.getTextColor1 = function () {
+                if (!$scope.view.code) {
+                    return '#fff';
+                }
+                return $scope.isColorLight($scope.view.code.color1) ? '#333' : '#fff';
+            };
+
+            /**
+             * Get the text color #2.
+             * Depends on color2 brightness.
+             * @returns {string}
+             */
+            $scope.getTextColor2 = function () {
+                if (!$scope.view.code) {
+                    return '#fff';
+                }
+                return $scope.isColorLight($scope.view.code.color2) ? '#333' : '#fff';
+            };
+
+            /**
+             * Copy short ulr to clipboard
+             *
+             * @param elem - input element with the link
+             * */
+            $scope.ifCopySucceed = false;
+            $scope.copyLinkToClipboard = function (elem) {
+                var targetId = "_hiddenCopyText_";
+                var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+                var origSelectionStart, origSelectionEnd;
+                if (isInput) {
+                    // can just use the original source element for the selection and copy
+                    target = elem;
+                    origSelectionStart = elem.selectionStart;
+                    origSelectionEnd = elem.selectionEnd;
+                } else {
+                    // must use a temporary form element for the selection and copy
+                    target = document.getElementById(targetId);
+                    if (!target) {
+                        var target = document.createElement("textarea");
+                        target.style.position = "absolute";
+                        target.style.left = "-9999px";
+                        target.style.top = "0";
+                        target.id = targetId;
+                        document.body.appendChild(target);
+                    }
+                    target.textContent = elem.textContent;
+                }
+                // select the content
+                var currentFocus = document.activeElement;
+                target.focus();
+                target.setSelectionRange(0, target.value.length);
+
+                // copy the selection
+                var succeed;
+                try {
+                    succeed = document.execCommand("copy");
+                } catch (e) {
+                    succeed = false;
+                }
+                // restore original focus
+                if (currentFocus && typeof currentFocus.focus === "function") {
+                    currentFocus.focus();
+                }
+
+                if (isInput) {
+                    // restore prior selection
+                    elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+                } else {
+                    // clear temporary content
+                    target.textContent = "";
+                }
+                $scope.$apply(function () {
+                    $scope.ifCopySucceed = succeed;
+                });
+                setTimeout(function () {
+                    $scope.$apply(function () {
+                        $scope.ifCopySucceed = false;
+                    });
+                }, 1500)
+            };
+
+            /**
+             * Open the dialog popup
+             * Event is for getting the current target element
+             * Target:
+             *      - shareAction: Button with got it information
+             *      - channelAction: Button with got it information
+             *
+             * @param event - string
+             * @param target - string
+             * */
+            $scope.callAction = function (event, target) {
+                switch (target) {
+                    case 'callAction':
+                        event.preventDefault();
+                        if ($scope.loadDemo) {
+                            $scope.gotItText = 'Name this optional button as you want and link to any website of your choice.';
+                            $scope.toggleDialog('gotIt', $(event.currentTarget));
+                        } else {
+                            $scope.toggleDialog('redirectTo');
+                        }
+                        break;
+                    case 'shareAction':
+                        if ($scope.loadDemo) {
+                            $scope.gotItText = 'Users can tap this button to share your page.';
+                            $scope.toggleDialog('gotIt', $(event.currentTarget));
+                        }
+                        break;
+                    case 'shareAction2':
+                        if ($scope.loadDemo) {
+                            toggleFab('#shareFab');
+                            event.preventDefault();
+                            $scope.gotItText = 'Your contacts can click this button to share your page.';
+                            $scope.toggleDialog('gotIt', $(document.getElementById('prime')));
+                        }
+                        break;
+                    case 'viewAction':
+                        if ($scope.loadDemo) {
+                            event.preventDefault();
+                            $scope.gotItText = 'By tapping here, users can open and view your PDF in full screen mode.';
+                            $scope.toggleDialog('gotIt', $(event.currentTarget));
+                        }
+                        break;
+                    case 'feedbackAction':
+                        if ($scope.loadDemo) {
+                            $scope.gotItText = 'Users can tap this button to send their coupons.';
+                            $scope.toggleDialog('gotIt', $(event.currentTarget));
+                        }
+                        break;
+                }
+            };
+
+            $scope.toggleFab = toggleFab;
+
+            /**
+             * Toggle dialog
+             *
+             * @param id - string
+             * @param element - current target
+             * */
+            $scope.toggleDialog = function (id, element) {
+                if (element) {
+                    var elem = element.context.outerHTML;
+                    $('#' + id + ' .dialog-container .event-gotIt-button').html(elem);
+                }
+                $($('#' + id).parent()).toggleClass('fabOnTop');
+                $('#' + id + ' .dialog-container').toggleClass('is-visible');
+                $('#prime.fab').toggleClass('disabledClick');
+                $('#' + id + ' .fixed-blur-bgd').toggle();
+            };
+
+            /**
+             * Callback of the dialog yes/no buttons
+             * Can close the dialog or it can redirect to a url and close the dialog
+             * If the url is not defined it will use the targetUrl from the callAction button
+             *
+             * @param proceed - string
+             * @param url - current target
+             * */
+            $scope.dialogRedirectCallback = function (proceed, url) {
+                if (proceed) {
+                    if (url) {
+                        $window.open(url, '_blank');
+                    } else {
+                        if ($scope.view.code.website.url.indexOf('http') < 0)
+                            $window.open('//' + $scope.view.code.website.url, '_blank');
+                        else
+                            $window.open($scope.view.code.website.url, '_blank');
+                    }
+                    $scope.closeDialog();
+                } else {
+                    $scope.closeDialog();
+                }
+            };
+
+            /**
+             * Close dialog
+             *
+             * */
+            $scope.closeDialog = function () {
+                $('.dialog-container').removeClass('is-visible');
+                $('#prime.fab').toggleClass('disabledClick');
+                $('.event-gotIt-button').html('');
+                $('.fixed-blur-bgd').hide();
+            };
+
+            //Inherit from basePreviewController
+            // @todo hmm this is not a normal angular inheritance...
+            angular.extend(this, $controller('BasePreviewController', {$scope: $scope}));
+
+            $scope.loadDemo = parent && typeof parent.ImHere === "function";
+
+            //Get the json data form the file
+            previewService.pushData({"form":[{"section_upload":{"fold":false}},{"section_design":{"fold":false}},{"section_basic_info":{"fold":false}},{"section_welcome_screen":{"fold":false}}],"code":{"file":{"name":"mapa ikp_annotated3.pdf","type":"application\/pdf","size":39864,"progress":100,"url":"https:\/\/cdn.qr-code-generator.com\/account47789006\/56717852_1.pdf?Expires=1769647352&Signature=R9pd1ctn07raPseI9mju-8Sv5pMV7M~-fM99h2~cnOcddbUC8NByzkXHSuFIczihRYsLPtZ0TS3eupjVbofqJUqK~7HXg4K5UQqFVc9awKitTE-jMVyak2H8LCMxJtaNhcWOyp-LOo2-~sdu-2XABUhNlIY8bSVuJBwMUZN5zS3y96TI-rQAmgdKFrP8SLZ2zl3SxZBZuFkPiZ6jh0xu2w0WfCFitKiP0AgiDX8lrThRB0IHjeB25nzWVt3T7WRC-5F1TQQn3Gv2v7LUuZp9x68MD0fI67CYkUYinm7E-84R7tmEkvRMliLz4TwPPGsk-7RuDPSe0Fdr56L68z~71w__&Key-Pair-Id=KKMPOJU8AYATR"},"avatar":"https:\/\/cdn.qr-code-generator.com\/account47789006\/56717853_1.jpg?Expires=1769647352&Signature=SEl4Pny6Cokk3YekgNSR4QfGxcu-mSerMrf7LOXQkiUMy1krhXmIipXw1XouUK5z30vqkah3kPqLc-hLmG9PE2FQ1WPpofc7KQHK9DWBRQ96cXY9YfbMcS45BIKDcWkS0dWSEi8ft0rYyAZfEsmLWkw0Pi34cBktIQv4yx9b9qaK7Zy3VtqpGpUoT2yR~gyftDflmNDheioSfsT9Nd2IcTapoYjcf5mvoITbjPAugcLDwaw-6rwVFcFsWovGlE2cl5sEjQXMY6Rwbw33lx7zDdeX9QrWPp9oIM1xmZ4OCfOMkMwLprZRN~cTzF8W5vmrlMU5qBwT0rj8WjJ0kgl8ow__&Key-Pair-Id=KKMPOJU8AYATR","closePreview":false,"isPdfUploading":false,"previews":["https:\/\/cdn.qr-code-generator.com\/account47789006\/56717853_1.jpg?Expires=1769561736&Signature=s53Um-59OXFR4JyI8nVeGP91Aa3H16ZGNFSB8YiMhSWHmFtnq-bHO1Eg0SgTvZyx5KXefgEZuM5hHU9bXARDefEgt2Uswd6cumSx-XY-k6WhHeuA0AAlOuSUGHsTOFO8iqP4hucNxsx7~IyQfM14fH-5YleFRTGx1ZvL8L~a4s2GnInX9SUjal4x0D8TTLNAZJSQwMgXL4DQJ6fvaaayOkU--q8T7EoLdqgfFdF6H0S56Nk2vZeGYQVPOtwHezWpEbVDF-GYmJ9E0rexXsYIwqdFYLVafBJPV3N43b~ugAQi3g1dAFDcrI1-ND-ax-SvULThnuwpdSw9f5GFHuAJaw__&Key-Pair-Id=KKMPOJU8AYATR","https:\/\/cdn.qr-code-generator.com\/account47789006\/56717853_2.jpg?Expires=1769561737&Signature=VbgSkBxASKZg8yJzhnlFqPQRKuSasUr636KEME0ng5trxbobHSUPMaNacifcw~4OPxwXMCj1jw4Yhnn4xGkNXmIKvAN7i20~IdCWItO2zqZ4EtWTwNDfd9uQlX2gjuwhQt87uqceVDtYTsyubzNiTvu9GZXHsJYtI4RFkreW~~B6GJ7iCx1JgASx3xej5pzQpRg3gg7WMzocri5WP175lmqimx2LUdSyHT-02blIr1geAnHtA8jo94JynAzv11fP-Mx2vZOJZ9CftuFrFUB-KQFm6iWhkIRvXByIh2544-oV6HN7xDuBHWqnyB5B5xccaSa56jnmtSDC58bwDC3pMQ__&Key-Pair-Id=KKMPOJU8AYATR","https:\/\/cdn.qr-code-generator.com\/account47789006\/56717853_3.jpg?Expires=1769561737&Signature=A8FBuAD-v7w60jUnE9D1fqOAlc4vitJOBmV4ThoMfwHnjAqhB1LTejbn22Mobem1el8wh4LCu6iuba5AgvcHOvwBl0BWBnp31bfRjKuYgfK8o8GloHH-bALlIdG~4yPyLjyRqmjjWUCHoCquUP2IVneMvrsE5UJvhkph-WhiEaug1r6dXO6Gd6cmEHrml8RN3ODEqH5XBmPKZ8xQyFljYUYsY7jUzR7GGPdL9bdi7dSHUaE8nY3ghUISw6TIcMINBKDTkKrmVwi3hY84Xlcdg-~6L5QAPKR8u5d78jxe9v9P3dD-hSnh0f9vYef-wikQA8GNFU1M1spDO1LsVIAJ1w__&Key-Pair-Id=KKMPOJU8AYATR"],"linkToPDF":false,"color1":"#000000","color2":"#f69214","welcome_extra":{"zoom":50,"background":"#ffffff"},"company":"Opowiadanie lokalno\u015bci","title":"Mapa Instytutu Kultury Polskiej","description":"Zapraszamy do pobrania mapy budynku, na kt\u00f3rej zaznaczone s\u0105 poszczeg\u00f3lne prace","website":""},"showPreview":0,"welcome_screen":"https:\/\/s3.eu-central-1.amazonaws.com\/qrcgappcdn\/pdf-solution\/welcome.png"});
+
+            /**
+             * Watch showPreview value
+             *
+             * @param p1 - new value
+             * @param p2 - old value
+             * */
+            $scope.$watch("view.showPreview", function (p1, p2) {
+                if (p1 != undefined && p1 == 'infinite') {
+                    setTimeout(function () {
+                        $(".loading-welcome.welcome-screen").show();
+                        $("#welcomeImg").fadeIn(1000);
+                    }, 500)
+                } else if (p1 == undefined && p2 != undefined && p2 == 'infinite') {
+                    $("#welcomeImg").hide();
+                    $(".loading-welcome").fadeOut();
+                } else if ((p1 != undefined && p2 != undefined && p1 != p2 ) || (p1 != undefined && p1 != 0 && p2 == undefined && p1 != p2)) {
+                    setTimeout(function () {
+                        $(".loading-welcome.welcome-screen").show();
+                        $("#welcomeImg").hide();
+                        $("#welcomeImg").fadeIn(1000);
+                        setTimeout(function () {
+                            $(".loading-welcome").fadeOut();
+                        }, 2000)
+                    }, 500)
+                }
+            });
+
+            $(document).ready(function () {
+
+                /**
+                 * Set the avatar width to a fix value
+                 * This will fix the flickering scrollbar issue on chrome
+                 * */
+                function setAvatarWidth(width) {
+                    if ($(window).innerWidth() <= 480)
+                        $('.sh-avatar').width(width - 70);
+                    else
+                        $('.sh-avatar').width(width);
+                }
+
+                var imageWidth = $('.sh-page').innerWidth();
+                setAvatarWidth(imageWidth);
+                $(window).resize(function () {
+                    imageWidth = $('.sh-page').innerWidth();
+                    setAvatarWidth(imageWidth)
+                });
+
+                /**
+                 * To work, function 'copyLinkToClipboard' needs to be called from an event listener on the copy button
+                 * */
+                document.getElementById("copyButton").addEventListener("click", function () {
+                    $scope.copyLinkToClipboard(document.getElementById("shortUrl"));
+                });
+            });
+
+            /**
+             * Convert hex color to rgbA
+             *
+             * @param hex - color
+             * @param opacity - value between 0-1
+             * */
+            $scope.hexToRgbA = function (hex, opacity) {
+                var c;
+                if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+                    c = hex.substring(1).split('');
+                    if (c.length == 3) {
+                        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+                    }
+                    c = '0x' + c.join('');
+                    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
+                }
+            };
+
+            /**
+             * Set text color based on the background
+             *
+             * @param color - background color
+             * */
+            $scope.isColorLight = function (color) {
+                var c;
+                if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(color)) {
+                    c = color.substring(1).split('');
+                    if (c.length == 3) {
+                        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+                    }
+                    c = '0x' + c.join('');
+
+                    var r = (c >> 16) & 255,
+                        g = (c >> 8) & 255,
+                        b = c & 255;
+                    // Counting the perceptive luminance
+                    // human eye favors green color...
+                    var a = 1 - (0.240 * r + 0.470 * g + 0.150 * b) / 255;
+                    return (a < 0.4);
+                }
+            };
+
+        }
+    );
+
+    if (parent && typeof parent.ImHere === "function") {
+        parent.ImHere();
+    } else {
+        //Only load this on standalone pages not inframe working
+        SocialShareKit.init();
+    }
+
+    /**
+     * Toggle fab
+     *
+     * @param id - id of the fab
+     */
+    function toggleFab(id) {
+        $(id + ' .prime').toggleClass('is-active');
+        $(id + ' #prime').toggleClass('is-float');
+        $($(id).parent()).toggleClass('fabOnTop');
+        $('#prime.fab').toggleClass('disabledClick');
+        $(id + ' .fixed-blur-bgd').toggle();
+        $(id + ' .chat').toggleClass('is-visible');
+    }
+
+    $(document).ready(function () {
+        $('#prime, .icon-event-close').click(function () {
+            var id = $($(this).closest('.fabs')).attr('id');
+            toggleFab('#' + id);
+        });
+
+        $('#share-fab-button').click(function () {
+            toggleFab('#saveMenu');
+        });
+
+        $('.fixed-blur-bgd').click(function (event) {
+            if (event.target == $(this)[0]) {
+                $($("#prime.is-float").parent().parent()).removeClass('fabOnTop');
+                $('.prime').removeClass('is-active');
+                $('#prime').removeClass('is-float');
+                $('#prime.fab').removeClass('disabledClick');
+                $('.chat, .dialog-container').removeClass('is-visible');
+                $(this).hide();
+            }
+        });
+
+        /**
+         * Ripple effect on element
+         */
+        var ink, d, x, y;
+        $(".ripplelink").click(function (e) {
+            if ($(this).find(".ink").length === 0) {
+                $(this).prepend("<span class='ink'></span>");
+            }
+
+            ink = $(this).find(".ink");
+            ink.removeClass("animate");
+
+            if (!ink.height() && !ink.width()) {
+                d = Math.max($(this).outerWidth(), $(this).outerHeight());
+                ink.css({height: d, width: d});
+            }
+
+            x = e.pageX - $(this).offset().left - ink.width() / 2;
+            y = e.pageY - $(this).offset().top - ink.height() / 2;
+
+            ink.css({top: y + 'px', left: x + 'px'}).addClass("animate");
+        });
+
+    });
+
+
+/*]]>*/
+</script>
 </body>
 </html>

@@ -290,21 +290,22 @@
   function setFloor(floor) {
     currentFloor = floor;
   
-    // przyciski aktywne
-    document.querySelectorAll("#floor-controls button")
-      .forEach((btn, i) => {
-        btn.classList.toggle("active", i + 1 === floor);
-      });
+    document.querySelectorAll("#floor-controls button").forEach(btn => {
+      btn.classList.toggle(
+        "active",
+        btn.dataset.floor == floor
+      );
+    });
   
     // zmiana mapy
     mapImage.src = `mapa${floor}.png`;
   
-    // po załadowaniu nowej mapy
     mapImage.onload = () => {
       fitMapToScreen();
       renderFloor();
     };
   }
+
 
   function renderFloor() {
     // usuń stare punkty
@@ -380,14 +381,11 @@
   });
 
   document.addEventListener("DOMContentLoaded", () => {
-  // podświetlenie parteru bez zmiany src mapy
-  document.querySelectorAll("#floor-controls button").forEach(btn => {
-    btn.classList.toggle(
-      "active",
-      btn.dataset.floor === "1"
-    );
+    document.querySelectorAll("#floor-controls button").forEach(btn => {
+      btn.classList.toggle(btn.dataset.floor == "1", true);
+    });
   });
-});
+
 
   
 </script>
@@ -406,6 +404,7 @@
 
 </body>
 </html>
+
 
 
 

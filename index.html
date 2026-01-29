@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
-  <title>Mapa z punktami</title>
+  <title>Mapa IKP - opowiadanie lokalności</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SheetJS -->
@@ -80,6 +80,39 @@
       background: #ff9800;
       color: #000;
     }
+
+    #modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    
+    #modal-content {
+      background: #fff;
+      color: #000;
+      padding: 24px;
+      border-radius: 14px;
+      max-width: 90vw;
+      max-height: 80vh;
+      overflow-y: auto;
+      font-family: Arial, sans-serif;
+    }
+    
+    #modal-content button {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
     
     /* punkt aktywny */
     .point.active {
@@ -187,6 +220,11 @@
 
   function addPoints(points) {
     const legendList = document.getElementById("legend-list");
+    const modal = document.getElementById("modal");
+    const modalText = document.getElementById("modal-text");
+    const closeModal = document.getElementById("close-modal");
+  
+    closeModal.onclick = () => modal.style.display = "none";
   
     points.forEach((p, index) => {
       // === PUNKT ===
@@ -201,36 +239,35 @@
   
       // === LEGENDA ===
       const li = document.createElement("li");
-      li.textContent = `${p.label} – ${p.dane}`;
       li.dataset.id = index;
+      li.innerHTML = `
+        ${p.label} – ${p.imie}
+        <br>
+        <button class="desc-btn">Zobacz opis</button>
+      `;
       legendList.appendChild(li);
   
+      const btn = li.querySelector(".desc-btn");
+  
+      function activate() {
+        clearActive();
+        li.classList.add("active");
+        point.classList.add("active");
+      }
+  
       // legenda → punkt
-      li.addEventListener("click", () => {
-        clearActive();
-        li.classList.add("active");
-        point.classList.add("active");
+      li.onclick = activate;
+      point.onclick = activate;
   
-        point.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "center"
-        });
-      });
-  
-      // punkt → legenda
-      point.addEventListener("click", () => {
-        clearActive();
-        li.classList.add("active");
-        point.classList.add("active");
-  
-        li.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
-      });
+      // opis
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        modalText.textContent = p.opis || "Brak opisu";
+        modal.style.display = "flex";
+      };
     });
   }
+
   
   function clearActive() {
     document.querySelectorAll(".active").forEach(el =>
@@ -242,12 +279,20 @@
 </script>
   
 <div id="legend">
-  <strong>Legenda</strong>
+  <strong>Legenda:</strong>
   <ul id="legend-list"></ul>
+</div>
+
+<div id="modal">
+  <div id="modal-content">
+    <button id="close-modal">← Wróć</button>
+    <div id="modal-text"></div>
+  </div>
 </div>
 
 </body>
 </html>
+
 
 
 

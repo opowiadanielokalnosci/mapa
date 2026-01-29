@@ -47,7 +47,7 @@
     }
     
     #floor-controls button.active {
-      background: orange;
+      background: #ff9800;
     }
 
 
@@ -385,8 +385,10 @@
   window.addEventListener("resize", () => {
   fitMapToScreen();
 });
-
-
+  document.addEventListener("DOMContentLoaded", () => {
+    setFloor(1); // ← parter aktywny od startu
+  });
+  
 </script>
   
 <div id="legend">
@@ -403,6 +405,7 @@
 
 </body>
 </html>
+
 
 
 

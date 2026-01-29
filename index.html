@@ -234,8 +234,6 @@
   const mapContainer = document.getElementById("map-container");
   const mapWrapper = document.getElementById("map-wrapper");
   
-  const floorButtons = document.querySelectorAll("#floor-controls button");
-
   mapImage.onload = () => {
     originalWidth = mapImage.naturalWidth;
     originalHeight = mapImage.naturalHeight;
@@ -288,17 +286,23 @@
         renderFloor();
       });
   }
+const floorButtons = document.querySelectorAll("#floor-controls button");
+let currentFloor = 1; // domyślnie parter
 
 function setFloor(floor) {
-  currentFloor = floor;
+  currentFloor = Number(floor); // upewniamy się, że typ to number
 
-  // podświetlenie przycisków
+  // odznacz wszystkie, zaznacz tylko ten
   floorButtons.forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.floor == floor);
+    if (Number(btn.dataset.floor) === currentFloor) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
   });
 
   // zmiana mapy
-  mapImage.src = `mapa${floor}.png`;
+  mapImage.src = `mapa${currentFloor}.png`;
 
   mapImage.onload = () => {
     fitMapToScreen();
@@ -306,18 +310,15 @@ function setFloor(floor) {
   };
 }
 
-// ustaw kliknięcia na przyciskach
+// dodaj kliknięcia do przycisków
 floorButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     setFloor(btn.dataset.floor);
   });
 });
 
-// podświetlenie parteru od startu (nie zmieniamy src mapy)
-floorButtons.forEach(btn => {
-  btn.classList.toggle("active", btn.dataset.floor == 1);
-});
-currentFloor = 1;
+// ustaw parter jako aktywny od startu
+setFloor(1);
 
 
 
@@ -412,6 +413,7 @@ currentFloor = 1;
 
 </body>
 </html>
+
 
 
 

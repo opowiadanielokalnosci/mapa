@@ -374,13 +374,21 @@
       el.classList.remove("active")
     );
   }
-  document.addEventListener("DOMContentLoaded", () => {
-    setFloor(1); // parter pomarańczowy od początku
-  });
 
   window.addEventListener("resize", () => {
     fitMapToScreen();
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+  // podświetlenie parteru bez zmiany src mapy
+  document.querySelectorAll("#floor-controls button").forEach(btn => {
+    btn.classList.toggle(
+      "active",
+      btn.dataset.floor === "1"
+    );
+  });
+});
+
   
 </script>
   
@@ -398,6 +406,7 @@
 
 </body>
 </html>
+
 
 
 

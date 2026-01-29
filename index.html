@@ -374,10 +374,13 @@
       el.classList.remove("active")
     );
   }
-  
+  document.addEventListener("DOMContentLoaded", () => {
+    setFloor(1); // parter pomarańczowy od początku
+  });
+
   window.addEventListener("resize", () => {
-  fitMapToScreen();
-});
+    fitMapToScreen();
+  });
   
 </script>
   
@@ -395,6 +398,7 @@
 
 </body>
 </html>
+
 
 
 

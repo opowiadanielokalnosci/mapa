@@ -233,6 +233,8 @@
   const mapImage = document.getElementById("map-image");
   const mapContainer = document.getElementById("map-container");
   const mapWrapper = document.getElementById("map-wrapper");
+  
+  const floorButtons = document.querySelectorAll("#floor-controls button");
 
   mapImage.onload = () => {
     originalWidth = mapImage.naturalWidth;
@@ -287,24 +289,36 @@
       });
   }
 
-  function setFloor(floor) {
-    currentFloor = floor;
-  
-    document.querySelectorAll("#floor-controls button").forEach(btn => {
-      btn.classList.toggle(
-        "active",
-        btn.dataset.floor == floor
-      );
-    });
-  
-    // zmiana mapy
-    mapImage.src = `mapa${floor}.png`;
-  
-    mapImage.onload = () => {
-      fitMapToScreen();
-      renderFloor();
-    };
-  }
+function setFloor(floor) {
+  currentFloor = floor;
+
+  // podświetlenie przycisków
+  floorButtons.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.floor == floor);
+  });
+
+  // zmiana mapy
+  mapImage.src = `mapa${floor}.png`;
+
+  mapImage.onload = () => {
+    fitMapToScreen();
+    renderFloor();
+  };
+}
+
+// ustaw kliknięcia na przyciskach
+floorButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    setFloor(btn.dataset.floor);
+  });
+});
+
+// podświetlenie parteru od startu (nie zmieniamy src mapy)
+floorButtons.forEach(btn => {
+  btn.classList.toggle("active", btn.dataset.floor == 1);
+});
+currentFloor = 1;
+
 
 
   function renderFloor() {
@@ -380,12 +394,6 @@
     fitMapToScreen();
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("#floor-controls button").forEach(btn => {
-      btn.classList.toggle(btn.dataset.floor == "1", true);
-    });
-  });
-
 
   
 </script>
@@ -404,6 +412,7 @@
 
 </body>
 </html>
+
 
 
 

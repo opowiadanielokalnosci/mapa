@@ -48,7 +48,6 @@
     
     #floor-controls button.active {
       background: orange;
-      color: #000;
     }
 
 
@@ -211,6 +210,12 @@
     <img src="mapa1.png" id="map-image">
   </div>
 </div>
+  
+<div id="floor-controls">
+  <button onclick="setFloor(1)">Parter</button>
+  <button onclick="setFloor(2)">Piętro 1</button>
+  <button onclick="setFloor(3)">Piętro 2</button>
+</div>
 
 
 <div id="controls">
@@ -292,24 +297,21 @@
   function setFloor(floor) {
     currentFloor = floor;
   
-    // PODŚWIETLENIE PRZYCISKÓW
+    // przyciski aktywne
     document.querySelectorAll("#floor-controls button")
-      .forEach(btn => {
-        btn.classList.toggle(
-          "active",
-          Number(btn.dataset.floor) === floor
-        );
+      .forEach((btn, i) => {
+        btn.classList.toggle("active", i + 1 === floor);
       });
   
-    // ZMIANA MAPY
+    // zmiana mapy
     mapImage.src = `mapa${floor}.png`;
   
+    // po załadowaniu nowej mapy
     mapImage.onload = () => {
       fitMapToScreen();
       renderFloor();
     };
   }
-
 
   function renderFloor() {
     // usuń stare punkty
@@ -383,10 +385,7 @@
   window.addEventListener("resize", () => {
   fitMapToScreen();
 });
-  
-document.addEventListener("DOMContentLoaded", () => {
-  setFloor(1); // ← parter aktywny od startu
-});
+
 
 </script>
   
@@ -404,9 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
-
-
 
 
 

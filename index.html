@@ -175,7 +175,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 100px;
+      font-size: 80px;
       font-weight: bold;
       color: black;
     }
@@ -233,7 +233,7 @@
   const mapImage = document.getElementById("map-image");
   const mapContainer = document.getElementById("map-container");
   const mapWrapper = document.getElementById("map-wrapper");
-  
+
   mapImage.onload = () => {
     originalWidth = mapImage.naturalWidth;
     originalHeight = mapImage.naturalHeight;
@@ -286,41 +286,25 @@
         renderFloor();
       });
   }
-const floorButtons = document.querySelectorAll("#floor-controls button");
-let currentFloor = 1; // domyślnie parter
 
-function setFloor(floor) {
-  currentFloor = Number(floor); // upewniamy się, że typ to number
-
-  // odznacz wszystkie, zaznacz tylko ten
-  floorButtons.forEach(btn => {
-    if (Number(btn.dataset.floor) === currentFloor) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
-  });
-
-  // zmiana mapy
-  mapImage.src = `mapa${currentFloor}.png`;
-
-  mapImage.onload = () => {
-    fitMapToScreen();
-    renderFloor();
-  };
-}
-
-// dodaj kliknięcia do przycisków
-floorButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    setFloor(btn.dataset.floor);
-  });
-});
-
-// ustaw parter jako aktywny od startu
-setFloor(1);
-
-
+  function setFloor(floor) {
+    currentFloor = floor;
+  
+    // przyciski aktywne
+    document.querySelectorAll("#floor-controls button")
+      .forEach((btn, i) => {
+        btn.classList.toggle("active", i + 1 === floor);
+      });
+  
+    // zmiana mapy
+    mapImage.src = `mapa${floor}.png`;
+  
+    // po załadowaniu nowej mapy
+    mapImage.onload = () => {
+      fitMapToScreen();
+      renderFloor();
+    };
+  }
 
   function renderFloor() {
     // usuń stare punkty
@@ -395,6 +379,15 @@ setFloor(1);
     fitMapToScreen();
   });
 
+  document.addEventListener("DOMContentLoaded", () => {
+  // podświetlenie parteru bez zmiany src mapy
+  document.querySelectorAll("#floor-controls button").forEach(btn => {
+    btn.classList.toggle(
+      "active",
+      btn.dataset.floor === "1"
+    );
+  });
+});
 
   
 </script>
@@ -413,12 +406,6 @@ setFloor(1);
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 

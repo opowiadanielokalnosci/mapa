@@ -369,7 +369,7 @@
       // opis
       btn.onclick = (e) => {
         e.stopPropagation();
-        modalText.textContent = p.opis || "Brak opisu";
+        modalText.innerHTML = p.opis || "Brak opisu";
         modal.style.display = "flex";
       };
     });
@@ -403,6 +403,7 @@
 
 </body>
 </html>
+
 
 
 

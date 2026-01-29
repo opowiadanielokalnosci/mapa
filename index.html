@@ -25,9 +25,23 @@
     }
 
     #map-wrapper {
-      width: 100vw;
-      overflow: auto;
+      /*width: 100vw;
+      overflow: auto;*/
+      margin-top: 70px;
     }
+      /* TELEFONY */
+    @media (max-width: 768px) {
+      #floor-controls {
+        top: 6px;
+        padding: 10px;
+      }
+    
+      #floor-controls button {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+    }
+
 
     #map-container {
       position: relative;
@@ -313,7 +327,7 @@
       const li = document.createElement("li");
       li.dataset.id = index;
       li.innerHTML = `
-        ${p.label} – ${p.imie}
+        ${p.label} – ${p.dane}
         <br>
         <button class="desc-btn">Zobacz opis</button>
       `;
@@ -366,6 +380,7 @@
 
 </body>
 </html>
+
 
 
 

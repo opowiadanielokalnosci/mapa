@@ -25,26 +25,8 @@
     }
 
     #map-wrapper {
-      /*width: 100vw;
-      overflow: auto;*/
-      margin-top: 70px;
-    }
-      /* TELEFONY */
-    @media (max-width: 768px) {
-      
-      #map-wrapper {
-        margin-top: 110px; /* miejsce na przyciski pięter */
-      }
-
-      #floor-controls {
-        top: 6px;
-        padding: 10px;
-      }
-    
-      #floor-controls button {
-        padding: 10px 12px;
-        font-size: 14px;
-      }
+      width: 100vw;
+      overflow: auto;
     }
 
 
@@ -244,16 +226,25 @@
     loadExcel();
   };
 
+  function getTopUIHeight() {
+    const controls = document.getElementById("floor-controls");
+    return controls ? controls.offsetHeight + 10 : 0;
+  }
+
+
   function fitMapToScreen() {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    const scaleX = screenWidth / originalWidth;
-    const scaleY = screenHeight / originalHeight;
-
-    scale = Math.min(scaleX, scaleY); // całość widoczna
+    const topUI = getTopUIHeight();
+  
+    const availableWidth = window.innerWidth;
+    const availableHeight = window.innerHeight - topUI;
+  
+    const scaleX = availableWidth / originalWidth;
+    const scaleY = availableHeight / originalHeight;
+  
+    scale = Math.min(scaleX, scaleY);
     applyZoom();
   }
+
 
   function zoomIn() {
     scale += 0.1;
@@ -367,6 +358,10 @@
       el.classList.remove("active")
     );
   }
+  
+  window.addEventListener("resize", () => {
+  fitMapToScreen();
+});
 
 
 </script>
@@ -385,6 +380,7 @@
 
 </body>
 </html>
+
 
 
 

@@ -12,7 +12,44 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      flex-direction: column;
     }
+
+        /* GÓRNY PASEK UI */
+    #top-bar {
+      flex: 0 0 auto;
+      background: #000;
+      padding: 10px 0;
+      z-index: 3000;
+    }
+    
+    #floor-controls {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3000;
+      background: #000;
+      padding: 8px;
+      border-radius: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    #floor-controls button {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    #floor-controls button.active {
+      background: orange;
+    }
+
 
     #controls {
       position: fixed;
@@ -25,7 +62,7 @@
     }
 
     #map-wrapper {
-      width: 100vw;
+      flex: 1 1 auto;
       overflow: auto;
     }
 
@@ -120,34 +157,6 @@
       margin-bottom: 12px;
     }
 
-    #floor-controls {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3000;
-      background: #000;
-      padding: 8px;
-      border-radius: 12px;
-      display: flex;
-      gap: 8px;
-    }
-    
-    #floor-controls button {
-      background: #fff;
-      color: #000;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    
-    #floor-controls button.active {
-      background: orange;
-    }
-
-
     /* punkt aktywny */
     .point.active {
       background: red;
@@ -187,7 +196,21 @@
 </head>
 
 <body>
+  
+<header id="top-bar">
+  <div id="floor-controls">
+    <button onclick="setFloor(1)">Parter</button>
+    <button onclick="setFloor(2)">Piętro 1</button>
+    <button onclick="setFloor(3)">Piętro 2</button>
+  </div>
+</header>
 
+<div id="map-wrapper">
+  <div id="map-container">
+    <img src="mapa1.png" id="map-image">
+  </div>
+</div>
+  
 <div id="floor-controls">
   <button onclick="setFloor(1)">Parter</button>
   <button onclick="setFloor(2)">Piętro 1</button>

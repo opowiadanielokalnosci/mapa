@@ -383,7 +383,10 @@
   window.addEventListener("resize", () => {
   fitMapToScreen();
 });
-
+  
+document.addEventListener("DOMContentLoaded", () => {
+  setFloor(1); // ← parter aktywny od startu
+});
 
 </script>
   
@@ -401,6 +404,7 @@
 
 </body>
 </html>
+
 
 
 

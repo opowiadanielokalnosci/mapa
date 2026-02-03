@@ -89,7 +89,7 @@
       border-radius: 14px;
     
       width: min(320px, 90vw);
-      max-height: 40vh;
+      max-height: 30vh;
       overflow-y: auto;
     
       font-family: Arial, sans-serif;
@@ -191,7 +191,28 @@
       font-size: 13px;
       white-space: nowrap;
     }
-    
+
+    .modal-gallery {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .modal-gallery img {
+      width: 160px;
+      max-width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .modal-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+
   </style>
 </head>
 
@@ -199,6 +220,7 @@
   
 <header id="top-bar">
   <div id="floor-controls">
+    <button onclick="setFloor(0)">Piętro -1</button>
     <button onclick="setFloor(1)">Parter</button>
     <button onclick="setFloor(2)">Piętro 1</button>
     <button onclick="setFloor(3)">Piętro 2</button>
@@ -214,12 +236,6 @@
 <div id="controls">
   <button onclick="zoomIn()">+</button>
   <button onclick="zoomOut()">−</button>
-</div>
-
-<div id="map-wrapper">
-  <div id="map-container">
-    <img src="mapa1.png" id="map-image">
-  </div>
 </div>
 
 <script>
@@ -293,7 +309,7 @@
     // przyciski aktywne
     document.querySelectorAll("#floor-controls button")
       .forEach((btn, i) => {
-        btn.classList.toggle("active", i + 1 === floor);
+        btn.classList.toggle("active", i === floor);
       });
   
     // zmiana mapy
@@ -301,7 +317,6 @@
   
     // po załadowaniu nowej mapy
     mapImage.onload = () => {
-      fitMapToScreen();
       renderFloor();
     };
   }
@@ -359,12 +374,32 @@
       point.onclick = () => activate(point, li);
       
         
-      // opis
+      // opis i zdjecia
       btn.onclick = (e) => {
         e.stopPropagation();
-        modalText.innerHTML = p.opis || "Brak opisu";
+
+        let html = `<p>${p.opis || "Brak opisu"}</p>`;
+
+        // === ZDJĘCIA ===
+        if (p.zdjecie) {
+          const images = p.zdjecie
+                  .split(";")
+                  .map(name => name.trim())
+                  .filter(name => name.length > 0);
+
+          if (images.length) {
+            html += `<div class="modal-gallery">`;
+            images.forEach(img => {
+              html += `<img src="${img}" alt="">`;
+            });
+            html += `</div>`;
+          }
+        }
+
+        modalText.innerHTML = html;
         modal.style.display = "flex";
       };
+
     });
   }
 

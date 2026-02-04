@@ -672,41 +672,50 @@
   window.addEventListener("resize", () => {
     fitMapToScreen();
   });
-
   let touchStartX = null;
   let touchEndX = null;
+  let isPinch = false;
 
   function handleFloorSwipe() {
+    if (isPinch) return; // ignoruj gest pinch
     if (touchStartX === null || touchEndX === null) return;
 
     const diff = touchStartX - touchEndX;
-
     if (Math.abs(diff) < 50) return; // martwa strefa
 
     if (diff > 0) {
-      // swipe w lewo → wyżej
-      setFloor(Math.min(currentFloor + 1, 3));
+      setFloor(Math.min(currentFloor + 1, 3)); // w lewo → wyżej
     } else {
-      // swipe w prawo → niżej
-      setFloor(Math.max(currentFloor - 1, 0));
+      setFloor(Math.max(currentFloor - 1, 0)); // w prawo → niżej
     }
 
     touchStartX = null;
     touchEndX = null;
+    isPinch = false; // reset
   }
 
   // touch
   document.addEventListener("touchstart", e => {
-    if (e.touches.length > 1) return; // więcej niż 1 palec → ignoruj (pinch)
+    if (e.touches.length > 1) isPinch = true; // więcej niż 1 palec → pinch
     touchStartX = e.touches[0].clientX;
   });
 
-  document.addEventListener("touchend", e => {
-    if (e.changedTouches.length > 1) return; // więcej niż 1 palec → ignoruj
-    touchEndX = e.changedTouches[0].clientX;
-    handleFloorSwipe();
+  document.addEventListener("touchmove", e => {
+    if (e.touches.length > 1) isPinch = true; // podczas ruchu → pinch
   });
 
+  document.addEventListener("touchend", e => {
+    // jeśli był pinch w trakcie gestu → ignoruj
+    if (!isPinch) {
+      touchEndX = e.changedTouches[0].clientX;
+      handleFloorSwipe();
+    } else {
+      // resetujemy po pinch
+      touchStartX = null;
+      touchEndX = null;
+      isPinch = false;
+    }
+  });
 
 
 

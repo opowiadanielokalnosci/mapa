@@ -362,18 +362,6 @@
 
 
 
-
-    #arrow-left {
-      left: 16px;
-    }
-
-    #arrow-right {
-      right: 16px;
-    }
-
-
-
-
   </style>
 </head>
 
@@ -614,28 +602,39 @@
   }
 
   function updateArrows() {
-    const left = document.getElementById("arrow-left");
-    const right = document.getElementById("arrow-right");
+    const container = document.getElementById("floor-arrows");
+    container.innerHTML = ""; // usuń stare strzałki
 
-    const leftLabel = document.getElementById("label-left");
-    const rightLabel = document.getElementById("label-right");
+    const maxFloor = 3;
 
-    // LEWO = niżej
-    if (currentFloor > 0) {
-      left.style.display = "flex";
-      leftLabel.textContent = floorNames[currentFloor - 1];
-    } else {
-      left.style.display = "none";
+    // strzałka w górę (wyżej) → zawsze po prawej
+    if (currentFloor < maxFloor) {
+      const up = document.createElement("div");
+      up.className = "arrow-wrap";
+      up.style.right = "16px";
+      up.style.left = "auto";
+      up.innerHTML = `
+      <button onclick="goFloor(1)">→</button>
+      <div class="arrow-label">${floorNames[currentFloor + 1]}</div>
+    `;
+      container.appendChild(up);
     }
 
-    // PRAWO = wyżej
-    if (currentFloor < 3) {
-      right.style.display = "flex";
-      rightLabel.textContent = floorNames[currentFloor + 1];
-    } else {
-      right.style.display = "none";
+    // strzałka w dół (niżej) → zawsze po lewej, tylko jeśli jest niższe piętro
+    if (currentFloor > 0) {
+      const down = document.createElement("div");
+      down.className = "arrow-wrap";
+      down.style.left = "16px";
+      down.style.right = "auto";
+      down.innerHTML = `
+      <button onclick="goFloor(-1)">←</button>
+      <div class="arrow-label">${floorNames[currentFloor - 1]}</div>
+    `;
+      container.appendChild(down);
     }
   }
+
+
 
 
 
@@ -735,17 +734,8 @@
   </div>
 </div>
 
-<div id="floor-arrows">
-  <div class="arrow-wrap" id="arrow-left">
-    <button onclick="goFloor(-1)">←</button>
-    <div class="arrow-label" id="label-left"></div>
-  </div>
+<div id="floor-arrows"></div>
 
-  <div class="arrow-wrap" id="arrow-right">
-    <button onclick="goFloor(1)">→</button>
-    <div class="arrow-label" id="label-right"></div>
-  </div>
-</div>
 
 
 

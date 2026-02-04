@@ -304,18 +304,30 @@
       top: 50%;
       left: 0;
       right: 0;
+      display: flex;
+      justify-content: space-between; /* lewa/prawa */
+      align-items: center;            /* pionowe wycentrowanie */
       pointer-events: none;
       z-index: 2500;
     }
 
     #floor-arrows button {
+      pointer-events: auto;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 26px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       display: flex;
       align-items: center;  /* centrowanie pionowe */
       justify-content: center;
       line-height: 1;
-      font-size: 26px;
     }
-
 
     #floor-arrows button:hover {
       background: #ff9800;
@@ -323,14 +335,13 @@
     }
 
     .arrow-wrap {
-      position: absolute;
-      top: 0;
-      transform: translateY(-50%);
+      position: relative;  /* już nie absolute */
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
       pointer-events: auto;
+      transform: none;     /* usuń translateY */
     }
 
     .arrow-label {

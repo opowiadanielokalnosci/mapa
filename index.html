@@ -697,23 +697,16 @@
 
   // touch
   document.addEventListener("touchstart", e => {
-    touchStartX = e.changedTouches[0].clientX;
+    if (e.touches.length > 1) return; // więcej niż 1 palec → ignoruj (pinch)
+    touchStartX = e.touches[0].clientX;
   });
 
   document.addEventListener("touchend", e => {
+    if (e.changedTouches.length > 1) return; // więcej niż 1 palec → ignoruj
     touchEndX = e.changedTouches[0].clientX;
     handleFloorSwipe();
   });
 
-  // mouse / trackpad
-  document.addEventListener("mousedown", e => {
-    touchStartX = e.clientX;
-  });
-
-  document.addEventListener("mouseup", e => {
-    touchEndX = e.clientX;
-    handleFloorSwipe();
-  });
 
 
 

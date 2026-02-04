@@ -698,7 +698,10 @@
 
   // touch
   document.addEventListener("touchstart", e => {
-    if (e.touches.length > 1) isPinch = true; // więcej niż 1 palec → pinch
+    // jeśli dotyk jest nad legendą → ignoruj swipe
+    if (e.target.closest("#legend")) return;
+
+    if (e.touches.length > 1) isPinch = true; // pinch
     touchStartX = e.touches[0].clientX;
   });
 
@@ -707,12 +710,18 @@
   });
 
   document.addEventListener("touchend", e => {
-    // jeśli był pinch w trakcie gestu → ignoruj
+    // jeśli dotyk nad legendą → ignoruj swipe
+    if (e.target.closest("#legend")) {
+      touchStartX = null;
+      touchEndX = null;
+      isPinch = false;
+      return;
+    }
+
     if (!isPinch) {
       touchEndX = e.changedTouches[0].clientX;
       handleFloorSwipe();
     } else {
-      // resetujemy po pinch
       touchStartX = null;
       touchEndX = null;
       isPinch = false;

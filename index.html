@@ -614,7 +614,12 @@
       up.style.right = "16px";
       up.style.left = "auto";
       up.innerHTML = `
-      <button onclick="goFloor(1)">→</button>
+      <button onclick="goFloor(1)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M10 7l5 5-5 5V7z"/>
+        </svg>
+      </button>
+
       <div class="arrow-label">${floorNames[currentFloor + 1]}</div>
     `;
       container.appendChild(up);
@@ -627,7 +632,12 @@
       down.style.left = "16px";
       down.style.right = "auto";
       down.innerHTML = `
-      <button onclick="goFloor(-1)">←</button>
+      <button onclick="goFloor(-1)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M14 7l-5 5 5 5V7z"/>
+        </svg>
+      </button>
+
       <div class="arrow-label">${floorNames[currentFloor - 1]}</div>
     `;
       container.appendChild(down);
